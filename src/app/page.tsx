@@ -18,105 +18,107 @@ export default function Home() {
   const clickHandler = (x: number, y: number) => {
     console.log(x, y);
     const newBoard = structuredClone(board);
-    if (board[y]?.[x] !== 0) return;
 
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y + i]?.[x] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y + i + 1]?.[x] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y + i][x] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y + k][x] = turnColor;
+    if (board[y][x] === 0) {
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y + i]?.[x] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y + i + 1]?.[x] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y + i][x] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y + k][x] = turnColor;
+          }
         }
       }
-    }
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y - i]?.[x] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y - i - 1]?.[x] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y - i][x] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y - k][x] = turnColor;
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y - i]?.[x] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y - i - 1]?.[x] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y - i][x] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y - k][x] = turnColor;
+          }
         }
       }
-    }
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y]?.[x + i] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y]?.[x + i + 1] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y][x + i] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y][x + k] = turnColor;
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y]?.[x + i] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y]?.[x + i + 1] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y][x + i] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y][x + k] = turnColor;
+          }
         }
       }
-    }
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y]?.[x - i] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y]?.[x - i - 1] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y][x - i] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y][x - k] = turnColor;
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y]?.[x - i] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y]?.[x - i - 1] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y][x - i] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y][x - k] = turnColor;
+          }
         }
       }
-    }
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y + i]?.[x + i] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y + i + 1]?.[x + i + 1] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y + i][x + i] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y + k][x + k] = turnColor;
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y + i]?.[x + i] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y + i + 1]?.[x + i + 1] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y + i][x + i] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y + k][x + k] = turnColor;
+          }
         }
       }
-    }
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y + i]?.[x - i] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y + i + 1]?.[x - i - 1] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y + i][x - i] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y + k][x - k] = turnColor;
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y + i]?.[x - i] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y + i + 1]?.[x - i - 1] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y + i][x - i] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y + k][x - k] = turnColor;
+          }
         }
       }
-    }
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y - i]?.[x + i] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y - i - 1]?.[x + i + 1] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y - i][x + i] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y - k][x + k] = turnColor;
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y - i]?.[x + i] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y - i - 1]?.[x + i + 1] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y - i][x + i] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y - k][x + k] = turnColor;
+          }
         }
       }
-    }
-    for (let i = 1; i < 8; i += 1) {
-      if (board[y - i]?.[x - i] !== 3 - turnColor) {
-        break;
-      }
-      if (board[y - i - 1]?.[x - i - 1] === turnColor) {
-        newBoard[y][x] = turnColor;
-        newBoard[y - i][x - i] = turnColor;
-        for (let k = 1; k < i; k += 1) {
-          newBoard[y - k][x - k] = turnColor;
+      for (let i = 1; i < 8; i += 1) {
+        if (board[y - i]?.[x - i] !== 3 - turnColor) {
+          break;
+        }
+        if (board[y - i - 1]?.[x - i - 1] === turnColor) {
+          newBoard[y][x] = turnColor;
+          newBoard[y - i][x - i] = turnColor;
+          for (let k = 1; k < i; k += 1) {
+            newBoard[y - k][x - k] = turnColor;
+          }
         }
       }
+      setTurnColor(3 - turnColor);
     }
-    setTurnColor(3 - turnColor);
+
     setBoard(newBoard);
   };
   return (
