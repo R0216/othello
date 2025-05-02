@@ -18,6 +18,16 @@ export default function Home() {
   const clickHandler = (x: number, y: number) => {
     console.log(x, y);
     const newBoard = structuredClone(board);
+    // const directions = [
+    //   [0, -1],
+    //   [1, -1],
+    //   [1, 0],
+    //   [1, 1],
+    //   [0, 1],
+    //   [-1, 1],
+    //   [-1, 0],
+    //   [-1, -1],
+    // ];
 
     if (board[y][x] === 0) {
       for (let i = 1; i < 8; i += 1) {
@@ -116,7 +126,9 @@ export default function Home() {
           }
         }
       }
-      setTurnColor(3 - turnColor);
+      if (newBoard[y][x] === turnColor) {
+        setTurnColor(3 - turnColor);
+      }
     }
 
     setBoard(newBoard);
